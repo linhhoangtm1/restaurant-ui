@@ -1,4 +1,0 @@
-- name: Next static build and export with HTML/JS minification
-  # You may pin to the exact commit or the version.
-  # uses: tsg-iitkgp/next-build-export-action@dfcd78a5f9adf56655148bf5b41eda25350574d7
-  uses: tsg-iitkgp/next-build-export-action@v1.2.1
