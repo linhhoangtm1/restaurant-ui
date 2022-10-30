@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import { ReactModalAdapter, ResponsiveVideoEmbed } from "helpers";
 import PlayIcon from "feather-icons/dist/icons/play-circle.svg";
 import SvgDecoratorBlob1 from "../../../public/images/svg-decorator-blob-1.svg";
@@ -49,7 +50,9 @@ export default ({
   imageDecoratorBlob = false,
 }: ITwoColumnWithVideo) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const Image = styled.img(imageCss);
+  const Image: any = styled.img`
+    ${(props: any) => props.imageCss}
+  `;
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
@@ -74,18 +77,14 @@ export default ({
           </LeftColumn>
           <RightColumn>
             <IllustrationContainer>
-              <Image src={imageSrc} alt="Hero"/>
+              <Image imageCss={imageCss} src={imageSrc} alt="Hero" />
               {imageDecoratorBlob && <DecoratorBlob2 />}
             </IllustrationContainer>
           </RightColumn>
         </TwoColumn>
         <DecoratorBlob1 />
-        <ReactModalAdapter
-          show={modalIsOpen}
-          onClose={toggleModal}
-          title=""
-        >
-            <ResponsiveVideoEmbed url={watchVideoYoutubeUrl} />
+        <ReactModalAdapter show={modalIsOpen} onClose={toggleModal} title="">
+          <ResponsiveVideoEmbed url={watchVideoYoutubeUrl} />
         </ReactModalAdapter>
       </Container>
     </>

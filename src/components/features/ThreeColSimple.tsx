@@ -1,5 +1,6 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import {
   SectionHeading,
   Subheading as SubheadingBase,
@@ -52,6 +53,10 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-40`}
 `;
 
+const ImageContainer: any = styled.span`
+  ${(props: any) => props.css}
+`;
+
 const ThreeColSimple = ({
   cards = [
     {
@@ -87,13 +92,16 @@ const ThreeColSimple = ({
         {heading && <Heading>{heading}</Heading>}
         {description && <Description>{description}</Description>}
         <ThreeColumnContainer>
-          {cards.map((card, i) => (
+          {cards.map((card: any, i) => (
             <Column key={i}>
               <Link href={card.url}>
                 <Card>
-                  <span className="imageContainer" css={imageContainerCss}>
+                  <ImageContainer
+                    className="imageContainer"
+                    css={imageContainerCss}
+                  >
                     <img src={card.imageSrc} alt="" />
-                  </span>
+                  </ImageContainer>
                   <span className="title">{card.title}</span>
                   <p className="description">{card.description}</p>
                   {linkText && (

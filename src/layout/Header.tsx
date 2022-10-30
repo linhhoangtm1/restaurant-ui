@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import { ReactModalAdapter, useAnimatedNavToggler } from "helpers";
 import MenuIcon from "feather-icons/dist/icons/menu.svg";
 import CloseIcon from "feather-icons/dist/icons/x.svg";
-import { IHeader } from "types";
+import { IHeader, IRecipe } from "types";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import classnames from "classnames";
@@ -87,7 +88,7 @@ export const DesktopNavLinks: any = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `;
 
-const Input = tw.input`hover:border-primary-100 mr-3 border-2 border-solid p-2 rounded border-gray-300`;
+const Input: any = tw.input`hover:border-primary-100 mr-3 border-2 border-solid p-2 rounded border-gray-300`;
 
 const tabs = [
   {
@@ -175,7 +176,7 @@ export default ({
   }
 
   useEffect(() => {
-    inputRef.current.value = router.query?.s || "";
+    inputRef.current && (inputRef.current.value = router.query?.s as string || "");
   }, [inputRef.current]);
 
   return (
@@ -223,7 +224,7 @@ export default ({
           show={showModal}
           onClose={toggleModal}
         >
-            {favoriteList.map(el => 
+            {favoriteList.map((el: IRecipe) => 
               <CardRecipe itemsPerRow={3} key={el.idMeal} data={el}/>
             )}
         </ReactModalAdapter>

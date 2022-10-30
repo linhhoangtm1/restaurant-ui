@@ -37,7 +37,7 @@ const API = {
       fetch(
         "http://localhost:3000/api/posts/popular?" +
           new URLSearchParams({
-            size,
+            size: String(size),
           })
       )
     );
@@ -49,7 +49,7 @@ const API = {
       fetch(
         "http://localhost:3000/api/posts/recent?" +
           new URLSearchParams({
-            size,
+            size: String(size),
           })
       )
     );

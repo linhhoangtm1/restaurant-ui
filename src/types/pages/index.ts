@@ -73,4 +73,6 @@ export interface IPost {
   id?: number;
   description?: string
   author?: IAuthor
+  featured?: boolean
+  date?: string
 }

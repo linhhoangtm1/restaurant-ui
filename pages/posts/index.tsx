@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
-import tw, { styled, css } from "twin.macro";
+import tw from "twin.macro";
+import styled, { css } from 'styled-components';
 import { SectionHeading } from "components/misc/Headings";
 import PrimaryButton from "components/misc/Buttons";
 import { IPost } from "types";
@@ -10,7 +11,7 @@ import Link from "next/link";
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
 const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;
-const PostContainer = styled.div`
+const PostContainer: any = styled.div`
   ${tw`mt-10 w-full sm:w-1/2 lg:w-1/3 sm:pr-8`}
   ${(props: any) =>
     props.featured &&
@@ -31,7 +32,7 @@ const PostContainer = styled.div`
     `}
 `;
 const Post: any = tw.div`cursor-pointer flex flex-col bg-gray-100 rounded-lg`;
-const Image = styled.div`
+const Image: any = styled.div`
   ${(props: any) =>
     css`
       background-image: url("${props.imageSrc}");

@@ -1,5 +1,6 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import FacebookIcon from "../../../public/images/facebook-icon.svg";
 import TwitterIcon from "../../../public/images/twitter-icon.svg";
 import YoutubeIcon from "../../../public/images/youtube-icon.svg";

@@ -20,7 +20,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     updateRecipeList: (state, { payload }) => {
-      payload.forEach(el => {
+      payload.forEach((el: IRecipe) => {
         if(state.favoriteList.find(fav => fav.idMeal === el.idMeal)){
           el.liked = true
         }

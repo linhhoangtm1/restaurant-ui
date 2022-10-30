@@ -9,7 +9,11 @@ export default function handler(
   const {
     query: { size },
   } = req;
-  let data = posts.sort((a, b) => new Date(b.date) - new Date(a.date))
+  let data = posts.sort((a, b) => {
+    const bDate = new Date(b.date) as any;
+    const aDate = new Date(a.date)  as any;
+    return bDate - aDate
+  })
   if(size) data = data.slice(0, Number(size))
   return res.status(200).json(data)
 }

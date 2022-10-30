@@ -1,13 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-import tw, { styled, css } from "twin.macro";
+import tw from "twin.macro";
+import styled, { css } from 'styled-components';
 import { IRecipe } from "types";
 import Link from "next/link";
 import HeartIcon from "feather-icons/dist/icons/heart.svg";
 import { useDispatch } from "react-redux";
 import { updateFavoriteList } from "store/slice/recipe.slice";
 
-const CardContainer = styled.div`
+const CardContainer: any = styled.div`
 ${(props: any) => props.itemsPerRow === 4 ? tw`sm:w-1/2 md:w-1/3 lg:w-1/4 sm:pr-10 md:pr-6 lg:pr-12` : tw`sm:w-1/2 lg:w-1/3  sm:pr-5 lg:pr-6`}
 ${tw`mb-5 w-full`}
 `;
@@ -22,7 +23,7 @@ const CardImageContainer: any = styled.div`
   ${tw`h-56 xl:h-64 bg-center bg-cover rounded-t`}
 `;
 const CardHeartContainer = tw.div`cursor-pointer leading-none absolute inline-flex bg-gray-100 top[20px] left-0 ml-4 mb-4 rounded-full px-1 py-1 items-end`;
-const CardHeart = styled.div`
+const CardHeart: any = styled.div`
   ${tw`text-sm font-bold flex items-end`}
   svg {
     ${tw`w-6 h-6 fill-current text-gray-400`}

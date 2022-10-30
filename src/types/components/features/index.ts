@@ -13,16 +13,23 @@ export interface ITwoColSingleFeatureWithStats2 {
   imageDecoratorBlob?: boolean;
   imageDecoratorBlobCss?: ITwin | null;
   imageInsideDiv?: boolean;
-  statistics?: null | { key: string, value: string}[];
+  statistics?: null | { key: string; value: string }[];
   textOnLeft?: boolean;
 }
 
+export interface ITab {
+  imageSrc?: string;
+  title?: string;
+  description?: string;
+  url?: string;
+}
+
 export interface IThreeColSimple {
-  cards: IRecipe[];
+  cards: IRecipe[] | ITab[];
   linkText?: string;
   heading?: string | ReactNode;
   subheading?: string;
   description?: string;
-  imageContainerCss?: ITwin | null;
+  imageContainerCss?: any;
   imageCss?: Object | null;
 }

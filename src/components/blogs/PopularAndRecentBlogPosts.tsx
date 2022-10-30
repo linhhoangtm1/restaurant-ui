@@ -1,5 +1,6 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 import { SectionHeading } from "components/misc/Headings";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts";

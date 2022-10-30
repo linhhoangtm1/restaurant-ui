@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
 import { SectionHeading } from "components/misc/Headings";
 import SvgDecoratorBlob1 from "../../../public/images/svg-decorator-blob-5.svg";
@@ -89,7 +90,7 @@ const TabCardGrid = ({ heading, data }: ITabCardGrid) => {
             initial={activeTab === tabKey ? "current" : "hidden"}
             animate={activeTab === tabKey ? "current" : "hidden"}
           >
-            {tabs[tabKey as keyof typeof tabs]?.map(
+            {(tabs[tabKey as keyof typeof tabs] as any[])?.map(
               (card: IRecipe) => (
                 <CardRecipe key={card.idMeal} data={card}/>
               )

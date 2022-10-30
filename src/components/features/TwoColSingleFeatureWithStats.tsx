@@ -1,11 +1,12 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import { SectionHeading } from "components/misc/Headings";
 import ThreeColSimpleWithImage from "components/blogs/ThreeColSimpleWithImage";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
-const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
+const Column = tw.div`w-full max-w-md mx-auto md:max-w-none mr-5`;
 const ImageColumn = tw(Column)`md:w-6/12 lg:w-5/12 flex-shrink-0 h-80 md:h-auto`;
 const TextColumn: any = styled(Column)((props: any) => [
   tw`md:w-6/12 mt-8 md:mt-0`,

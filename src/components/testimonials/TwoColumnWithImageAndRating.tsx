@@ -1,7 +1,8 @@
 import "slick-carousel/slick/slick.css";
 import React, { useState } from "react";
 import Slider from "react-slick";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import { SectionHeading } from "components/misc/Headings";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
 import StarIconBase from "../../../public/images/star-icon.svg";
@@ -11,12 +12,12 @@ import ArrowRightIcon from "../../../public/images/arrow-right-3-icon.svg";
 const Row = tw.div`flex flex-col md:flex-row justify-between items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-5/12 xl:w-6/12 flex-shrink-0 relative`;
-const TextColumn = styled(Column)((props: any) => [
+const TextColumn: any = styled(Column)((props: any) => [
   tw`md:w-7/12 xl:w-6/12 mt-16 md:mt-0`,
   props.textOnLeft ? tw`md:pr-12 lg:pr-16 md:order-first` : tw`md:pl-12 lg:pl-16 md:order-last`
 ]);
 
-const Image = styled.img((props: any) => [
+const Image: any = styled.img((props: any) => [
   props.imageRounded && tw`rounded`,
   props.imageBorder && tw`border`,
   props.imageShadow && tw`shadow`
@@ -102,7 +103,7 @@ const TwoColumnWithImageAndRating = ({
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
             <TestimonialSlider arrows={false} ref={setSliderRef}>
-              {testimonials.map((testimonial, index) => (
+              {testimonials.map((testimonial: any, index) => (
                 <Testimonial key={index}>
                   <StarsContainer>
                     {Array.from({ length: testimonial.stars }).map((_,indexIcon) => (

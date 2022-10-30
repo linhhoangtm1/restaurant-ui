@@ -1,5 +1,6 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import EmailNewsletterIconBase from "../../../public/images/email-newsletter-icon.svg";
 import {Container as ContainerBase } from "components/misc/Layouts"
 import {SectionHeading} from "components/misc/Headings";

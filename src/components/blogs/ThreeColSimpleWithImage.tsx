@@ -1,5 +1,6 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
+import styled from "styled-components";
 import { SectionHeading as HeadingTitle } from "../misc/Headings";
 import SvgDecoratorBlob1 from "../../../public/images/svg-decorator-blob-1.svg";
 import SvgDecoratorBlob2 from "../../../public/images/svg-decorator-blob-3.svg";
