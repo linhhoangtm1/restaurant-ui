@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-		
     runs-on: ubuntu-latest
 
     steps:
@@ -20,10 +19,8 @@ jobs:
 
       - name: Build
         run: |
-          npm ci
           npm run build
           npm run export
-          touch out/.nojekyll
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.4.0 
