@@ -23,7 +23,7 @@ jobs:
           npm run export
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.4.0 
-          with:
-            branch: main
-            folder: out
+        uses: JamesIves/github-pages-deploy-action@4.4.1 
+        with:
+          branch: main
+          folder: out
