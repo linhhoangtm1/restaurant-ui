@@ -65,7 +65,7 @@ export default ({ popularPosts, recentPosts }: any) => {
           <PopularPostsContainer>
             <Heading>Table talks</Heading>
             <PostsContainer>
-              {popularPosts.map((post: IPost, index: number) => (
+              {popularPosts?.map((post: IPost, index: number) => (
                 <Link key={index} href={`/posts/${post.id}`}>
                   <Post
                     className="group"
@@ -95,7 +95,7 @@ export default ({ popularPosts, recentPosts }: any) => {
           <RecentPostsContainer>
             <Heading>Recent Posts</Heading>
             <PostsContainer>
-              {recentPosts.map((post: IPost, index: number) => (
+              {recentPosts?.map((post: IPost, index: number) => (
                 <Link key={index} href={`/posts/${post.id}`}>
                 <Post href={post.id} className="group">
                   <PostTextContainer>

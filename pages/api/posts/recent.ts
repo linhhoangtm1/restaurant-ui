@@ -14,6 +14,7 @@ export default function handler(
     const aDate = new Date(a.date)  as any;
     return bDate - aDate
   })
+  console.log(data)
   if(size) data = data.slice(0, Number(size))
   return res.status(200).json(data)
 }

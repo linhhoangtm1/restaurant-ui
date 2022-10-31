@@ -8,17 +8,33 @@ import PopularAndRecentPostsBlog from "components/blogs/PopularAndRecentBlogPost
 import API from "service";
 import { getRecipeList, updateRecipeList } from "store/slice/recipe.slice";
 import { useDispatch, useSelector } from "react-redux";
+import useSWR from "swr";
 
 const Subheading = tw.span`tracking-wider text-sm font-medium`;
 const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;
 const imageCss = tw`rounded-4xl`;
 
-export default ({ data, recentPosts, popularPosts }: any) => {
+const fetcher = () => {
+  return API.getBlogRecent({size: 5})
+}
+
+const fetcherPopular = () => {
+  return API.getBlogPopular({size: 2})
+}
+
+export default ({ data }: any) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(updateRecipeList(data));
   }, [data]);
   const list = useSelector(getRecipeList)
+
+  const resBlog = useSWR("/api/posts/recent", fetcher);
+  const { data: recentPosts } = resBlog
+
+  const resPopular = useSWR("/api/posts/popular", fetcherPopular);
+  const { data: popularPosts } = resPopular
+  
   return (
     <div>
       <Hero
@@ -113,14 +129,10 @@ export default ({ data, recentPosts, popularPosts }: any) => {
 
 export async function getStaticProps() {
   const data = await API.getRecipeList();
-  const popularPosts = await API.getBlogPopular({ size: 2 });
-  const recentPosts = await API.getBlogRecent({ size: 5 });
 
   return {
     props: {
       data: data?.meals,
-      recentPosts,
-      popularPosts,
     },
   };
 }

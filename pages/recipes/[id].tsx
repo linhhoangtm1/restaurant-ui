@@ -1,10 +1,18 @@
 import VerticalWithAlternateImageAndText from "components/features/VerticalWithAlternateImageAndText";
 import React from "react";
 import API from "service";
+import useSWR from "swr";
 import { IPost, IRecipe } from "types";
 
-const RecipeDetail = ({ data, posts }: Record<string, IRecipe | IPost[]>) => {
-  return <VerticalWithAlternateImageAndText data={data} posts={posts} />;
+const fetcherPopular = () => {
+  return API.getBlogPopular({size: 3}).then(res => res)
+}
+
+const RecipeDetail = ({ data }: Record<string, IRecipe | IPost[]>) => {
+  
+  const resPopular = useSWR("/api/posts/popular", fetcherPopular);
+  const { data: popularPosts } = resPopular
+  return <VerticalWithAlternateImageAndText data={data} posts={popularPosts} />;
 };
 
 export default RecipeDetail;
@@ -16,17 +24,15 @@ export async function getStaticPaths() {
   }));
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 }
 
 export async function getStaticProps({ params }: any) {
   const recipes = await API.getRecipeDetail(params.id)
-  const posts = await API.getBlogPopular({ size: 3 })
   return {
     props: {
       data: recipes.meals?.[0],
-      posts
     }
   }
 }

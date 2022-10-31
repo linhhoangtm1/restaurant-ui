@@ -1,4 +1,5 @@
 import { IPaginate, IPost, IRecipe } from "types";
+import { posts } from "../../pages/api/mockData";
 import serviceHandler from "./serviceHandler";
 
 const API = {
@@ -26,33 +27,45 @@ const API = {
     return data;
   },
   getBlogDetail: async (id: IPost["id"]) => {
-    const data = await serviceHandler(() =>
-      fetch(`http://localhost:3000/api/posts/${id}`)
-    );
+    let data = {};
+    if (process.env.NODE_ENV === "production") {
+      data = posts.find((el) => el.id === Number(id)) || {};
+    } else
+      data = await serviceHandler(() =>
+        fetch(`http://localhost:3000/api/posts/${id}`)
+      );
     return data;
   },
   getBlogPopular: async (props?: IPaginate) => {
     const { size } = props || {};
-    const data = await serviceHandler(() =>
-      fetch(
-        "http://localhost:3000/api/posts/popular?" +
-          new URLSearchParams({
-            size: String(size),
-          })
-      )
-    );
+    let data = [];
+    if (process.env.NODE_ENV === "production") {
+      data = posts.slice(0, size);
+    } else
+      data = await serviceHandler(() =>
+        fetch(
+          "http://localhost:3000/api/posts/popular?" +
+            new URLSearchParams({
+              size: String(size),
+            })
+        )
+      );
     return data;
   },
   getBlogRecent: async (props?: IPaginate) => {
     const { size } = props || {};
-    const data = await serviceHandler(() =>
-      fetch(
-        "http://localhost:3000/api/posts/recent?" +
-          new URLSearchParams({
-            size: String(size),
-          })
-      )
-    );
+    let data = [];
+    if (process.env.NODE_ENV === "production") {
+      data = posts.slice(0, size);
+    } else
+      data = await serviceHandler(() =>
+        fetch(
+          "http://localhost:3000/api/posts/recent?" +
+            new URLSearchParams({
+              size: String(size),
+            })
+        )
+      );
     return data;
   },
 };
